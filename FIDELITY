@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fidelity Bank Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background-color: #ffffff;
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .help-link {
+            color: #0074c1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .main-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            padding: 30px;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .login-title {
+            color: #0033a0;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .login-subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus {
+            border-color: #0074c1;
+            outline: none;
+        }
+        
+        .password-toggle {
+            position: relative;
+        }
+        
+        .toggle-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #777;
+            font-size: 18px;
+        }
+        
+        .forgot-link {
+            display: block;
+            text-align: right;
+            margin-top: 5px;
+            color: #0074c1;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            background-color: #e03534;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .login-button:hover {
+            background-color: #c52a29;
+        }
+        
+        .register-section {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .register-text {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .register-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #0074c1;
+            border: 1px solid #0074c1;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .register-button:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .footer {
+            background-color: #0033a0;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+        }
+        
+        .error-message {
+            color: #e03534;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNDAiPjxwYXRoIGZpbGw9IiMwMDMzYTAiIGQ9Ik0yMCwxMGg2MHYyMGgtNjBWMzBoMTB2LTEwaC0xMFYxMHoiLz48cGF0aCBmaWxsPSIjZTAzNTM0IiBkPSJNNzAsMTB2MjBoMTBWMTAiLz48dGV4dCB4PSIzMCIgeT0iMjgiIGZpbGw9IiMwMDMzYTAiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSJib2xkIj5GSURFTElUWSBCQU5LPC90ZXh0Pjwvc3ZnPg==" alt="Fidelity Bank" class="logo">
+        <a href="#" class="help-link">Help</a>
+    </div>
+    
+    <div class="main-container">
+        <div class="login-container">
+            <div class="login-header">
+                <h1 class="login-title">Internet Banking</h1>
+                <p class="login-subtitle">Login to your account</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" class="form-input" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="password-toggle">
+                        <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                        <span class="toggle-icon" id="togglePassword">👁</span>
+                    </div>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    Invalid username or password. Please try again.
+                </div>
+                
+                <button type="submit" class="login-button">Login</button>
+            </form>
+            
+            <div class="register-section">
+                <p class="register-text">Don't have an account?</p>
+                <a href="#" class="register-button">Register Now</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2023 Fidelity Bank Plc</p>
+    </div>
+
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+        });
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // This is just for demonstration - credentials would be visible
+            console.log('Username:', username);
+            console.log('Password:', password);
+            
+            // Simulate login failure for demonstration
+            document.getElementById('errorMessage').style.display = 'block';
+            
+            // In a real implementation, you would send this data to a server
+            // fetch('/login', { method: 'POST', body: JSON.stringify({username, password}) })
+        });
+    </script>
+</body>
+</html>
